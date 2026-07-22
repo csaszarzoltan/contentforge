@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.0] — 2026-07-22
+
+### Features
+- **FastAPI REST API** — Full set of REST endpoints for brand voice CRUD, content generation, scheduling, and analytics
+- **Async SQLAlchemy database** — PostgreSQL-ready async engine with declarative models, sessions, and migration support
+- **Data models** — BrandVoice, Generation, ScheduledPost, ContentAnalytics ORM models with soft-delete and version tracking
+- **Pydantic schemas** — 15+ request/response validation schemas across all domains
+- **LLM provider service** — OpenAI-compatible provider with configurable model, base URL, and error handling
+- **Content generator service** — Template-driven generation with brand voice injection and validation
+- **Scheduler service** — In-memory scheduling service with lifecycle management and status tracking
+- **Analytics service** — Content performance metrics tracking with summary aggregation
+- **Configuration system** — Pydantic-settings based config with environment variable loading and singleton access
+- **Railway deployment** — Dockerfile + railway.json for containerized deployment, HEALTHCHECK endpoint, CORS middleware
+- **Documentation** — 10 new docs pages covering all modules (brand voice, compliance, extraction, models, multi-brand, parser, presets, prompt-binding, scoping, templates)
+- **Usage examples** — basic_usage.py, compliance.py, presets.py with real API workflows
+
+### Fixes
+- Guard against empty `response.choices` list in LLM provider — raises `ValueError` instead of `IndexError` on content filter or rate limit edge cases
+
+### Tests
+- 143 new tests across 8 test modules (analytics, brand_voice CRUD, config, content generation, database, DB models, dependencies, scheduling)
+- 285 pass, 27 expected behavioral failures (stub-replaced-by-real-implementation), 3 skipped — ruff clean
+
 ## [0.2.0] — 2026-07-22
 
 ### Features
